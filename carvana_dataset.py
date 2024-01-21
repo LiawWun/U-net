@@ -1,7 +1,9 @@
 import os, random
+import argparse
 from PIL import Image
 from torch.utils.data.dataset import Dataset
 from torchvision import transforms
+
 
 class CarvanaDataset(Dataset):
     def __init__(self, root_path, test=False):
@@ -38,9 +40,14 @@ class CarvanaDataset(Dataset):
     
 if __name__ == "__main__":
 
-    # Test the function in the dataset.
+    parser = argparse.ArgumentParser(description="Script description")
 
-    root_path = "D:\CarvanaDataset_tiny"
+    # Add command-line argument for root_path
+    parser.add_argument('--root_path', type=str, default="D:\\CarvanaDataset_tiny", help='Path to the root folder of the Carvana dataset')
+
+    args = parser.parse_args()
+
+    root_path = args.root_path
 
     car_dataset = CarvanaDataset(root_path, False)
 
