@@ -49,8 +49,7 @@ if __name__ == "__main__":
 
     for epoch in tqdm(range(EPOCHS)):
 
-        print("=" * 50)
-        print(f"Epoch: {epoch + 1}")
+        
 
         # Training section
         model.train()
@@ -82,7 +81,9 @@ if __name__ == "__main__":
 
                 valid_running_loss += loss.item()
             valid_loss = valid_running_loss / (idx + 1)
-        
+            
+        print("=" * 50)
+        print(f"Epoch: {epoch + 1}")
         print(f"Train : {train_loss:.4f} Valid loss: {valid_loss:.4f}")
         print("=" * 50)
         save_name = "unet_" + str(epoch) + ".pth"
